@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${article.title}"></title>
+    <head th:include="home/common/header"></head>
+</head>
+
+<body class="user-select single">
+    <!--Header nav-->
+    <header th:include="home/common/main_menu"></header>
+    <section class="container">
+        <div class="content-wrap">
+            <div class="content">
+                <header class="article-header">
+                    <h1 class="article-title" th:text="${article.title}"></h1>
+                    <div class="article-meta">
+                        <span class="item article-meta-time">
+                            <time class="time" data-toggle="tooltip" data-placement="bottom">
+                                <i class="glyphicon glyphicon-time"></i>
+                                <span th:text="${article.createTime}"></span>
+                            </time>
+                        </span>
+                        <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom">
+                            <i class="glyphicon glyphicon-list"></i><a href="javascript:;" th:text="${typeCodeMap['__${article.type}__']}"></a></span>
+                        <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120">
+                            <i class="glyphicon glyphicon-eye-open"></i> 共<span th:text="${article.click}"></span>围观
+                        </span>
+                    </div>
+                </header>
+                <article class="article-content">
+                    <p><img data-original="/images/banner/banner_03.jpg" src="/images/banner/banner_03.jpg" alt="" /></p>
+                    <div th:utext="${article.content}"></div>
+                    <p class="article-copyright hidden-xs">未经允许不得转载
+                        <!--：<a href="">个人博客</a> » <a href="@{article.html(id=1)}">php如何判断一个日期的格式是否正确</a>-->
+                    </p>
+                </article>
+                <div class="article-tags">标签：<a href="javascript:;" rel="tag" th:text="${gradeCodeMap['__${article.grade}__']}"></a></div>
+                <div class="relates">
+                    <div class="title">
+                        <h3>相关推荐</h3>
+                    </div>
+                    <ul th:each="aboutArticle:${aboutRecommond}">
+                        <li><a th:href="@{article.html(id=${aboutArticle.id})}" th:text="${aboutArticle.title}"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--sidebar-->
+        <aside th:include="home/common/index_sidebar"></aside>
+    </section>
+
+    <!--footer-->
+    <div th:include="home/common/footer"></div>
+    <!--微信二维码模态框-->
+    <div th:include="home/common/weixin_code"></div>
+    <!--该功能正在日以继夜的开发中-->
+    <div th:include="home/common/continue"></div>
+    <!--右键菜单列表-->
+    <div th:include="home/common/rightkey_menu"></div>
+    <!--publicJs-->
+    <div th:include="home/common/public_js"></div>
+</body>
+</html>

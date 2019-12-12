@@ -1,0 +1,31 @@
+<nav th:class="pagination">
+    <ul class="pagination">
+        <li>
+            <a th:if="${not isFirstPage}" th:href="@{${page_name}(page=${page-1})}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+            <a th:if="${isFirstPage}" href="javascript:void(0);" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        <li th:each="pageNo : ${#numbers.sequence(1, totalPages)}">
+            <a th:if="${page eq pageNo}" href="javascript:void(0);">
+                <span th:text="${pageNo}"></span>
+            </a>
+
+            <a th:if="${not (page eq pageNo)}" th:href="@{${page_name}(page=${pageNo})}">
+                <span th:text="${pageNo}"></span>
+            </a>
+        </li>
+
+        <li>
+            <a th:if="${not isLastPage}" th:href="@{${page_name}(page=${page+1})}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+            <a th:if="${isLastPage}" href="javascript:void(0);" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

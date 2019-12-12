@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>写作管理</title>
+    <head th:include="/admin/common/header"></head>
+</head>
+<body>
+<div id="wrapper">
+    <!-- 左侧菜单 -->
+    <nav th:include="/admin/common/sidebar"></nav>
+    <!-- 内容部分-->
+    <div id="page-wrapper">
+        <div class="col-md-12 graphs">
+            <div class="xs">
+                <h3>个人写作</h3>
+                <div class="bs-example4" style="text-align: right;padding: 10px;">
+                    <a th:href="@{/admin/diary/add.html}" type="button" style="margin-right: 20px;" class="btn btn-primary">新增</a>
+                </div>
+                <div class="bs-example4" data-example-id="contextual-table">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>标   题</th>
+                            <th>类   型</th>
+                            <th>删   除</th>
+                            <th>创建时间</th>
+                            <th>更新时间</th>
+                            <th style="width: 40px;">操   作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="diary : ${data}" th:class="${diary.id%2>0}? active:info" th:id="tr-+${diary.id}">
+                            <th th:text="${diary.id}" th:score="${diary.id%2>0}? row:success"></th>
+                            <th th:text="${diary.title}"></th>
+                            <th th:text="${typeCodeMap['__${diary.type}__']}"></th>
+                            <th th:text="${diary.deleted>0} ? 是 : 否"></th>
+                            <th th:text="${diary.createTime}"></th>
+                            <th th:text="${diary.updateTime}"></th>
+                            <th><button type="button" th:data-id="${diary.id}" data-obj="diary" class="btn btn-danger delete-single">删除</button></th>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <!--分页-->
+                    <nav th:include="/admin/common/pager"></nav>
+                </div>
+            </div>
+            <!--copyright-->
+            <div th:include="/admin/common/copy_layout"></div>
+        </div>
+    </div>
+</div>
+<!--modal-->
+<div th:include="/admin/common/module/deleted_confirm"></div>
+<div th:include="/admin/common/module/disappare_modal"></div>
+</body>
+</html>
+<!-- /#wrapper -->
+<!-- Bootstrap Core JavaScript -->
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/comm/js/common.js"></script>
+<script type="text/javascript">
+    commonJs = new commonJs();
+    commonJs.init();
+</script>

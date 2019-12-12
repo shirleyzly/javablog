@@ -1,0 +1,32 @@
+<aside class="sidebar">
+    <div class="fixed">
+        <div class="widget widget-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab">站长小贴士</a></li>
+                <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">联系站长</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane notice active" id="notice">
+                    <ul>
+                        <li th:each="notices:${notice}">
+                            <time th:datetime="${notices.date}">
+                                <span th:text="${notices.date}"></span>
+                            </time>
+                            <a href="notice.html" target="_blank" th:text="${notices.title}"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane contact" id="contact">
+                    <h2>Email:<br />
+                        <a href="mailto:admin@lulijuan.com" data-toggle="tooltip" data-placement="bottom" title="admin@lulijuan.com">admin@lulijuan.com</a></h2>
+                </div>
+            </div>
+        </div>
+        <!--widget_search-->
+        <div th:include="home/common/search_bar"></div>
+    </div>
+    <!--每日一句-->
+    <div th:include="home/common/english"></div>
+    <!--热门文章-->
+    <div th:include="home/common/hot_articles"></div>
+</aside>

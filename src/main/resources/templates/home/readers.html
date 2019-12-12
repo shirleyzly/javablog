@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>读者墙</title>
+    <head th:include="home/common/header"></head>
+</head>
+
+<body class="user-select">
+    <!--Header nav-->
+    <header th:include="home/common/main_menu"></header>
+    <section class="container container-page">
+        <div class="pageside">
+            <div class="pagemenus">
+                <ul class="pagemenu">
+                    <li><a href="tags.html">标签云</a></li>
+                    <!--<li><a href="readers.html">读者墙</a></li>-->
+                    <li><a href="links.html">友情链接</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <header class="article-header">
+                <h1 class="article-title">读者墙</h1>
+            </header>
+            <div class="readers">
+                <a class="item-readers item-readers-1" target="_blank" href="" rel="nofollow">
+                    <h4>【金牌读者】<small>评论：123</small></h4>
+                    <img class="avatar" height="36" width="36" src="/images/icon/icon.png" alt="">
+                    <strong>Me</strong>http://www.lulijuan.com/
+                </a>
+            </div>
+        </div>
+    </section>
+    <!--footer-->
+    <div th:include="home/common/footer"></div>
+    <!--微信二维码模态框-->
+    <div th:include="home/common/weixin_code"></div>
+    <!--该功能正在日以继夜的开发中-->
+    <div th:include="home/common/continue"></div>
+    <!--右键菜单列表-->
+    <div th:include="home/common/rightkey_menu"></div>
+
+    <!--publicJs-->
+    <div th:include="home/common/public_js"></div>
+</body>
+</html>

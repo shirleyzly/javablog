@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>编程进阶</title>
+    <head th:include="home/common/header"></head>
+</head>
+
+<body class="user-select">
+    <!--Header nav-->
+    <header th:include="home/common/main_menu"></header>
+    <section class="container">
+        <div class="content-wrap">
+            <div class="content">
+                <div class="title">
+                    <h3>编程进阶</h3>
+                </div>
+                <article th:each="articles:${data}" th:class="excerpt+' '+excerpt-+(${articles.id})">
+                    <a class="focus" th:href="@{article.html(id=${articles.id})}" title="${articles.title}">
+                        <img class="thumb" th:src="${articles.pic}" alt="">
+                    </a>
+                    <header>
+                        <a class="cat" th:href="@{article.html(id=${articles.id})}" th:text="${typeCodeMap['__${articles.type}__']}"><i></i></a>
+                        <h2>
+                            <a th:href="@{article.html(id=${articles.id})}"  th:title="${articles.title}" th:text="${articles.title}"></a>
+                        </h2>
+                    </header>
+                    <p class="meta">
+                        <time class="time">
+                            <i class="glyphicon glyphicon-time"></i>
+                            <span th:text="${articles.createTime}"></span>
+                        </time>
+                        <span class="views">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                            共<span th:text="${articles.click}"></span>人围观
+                        </span>
+                    </p>
+                    <p class="note" th:text="${articles.description}"></p>
+                </article>
+                <!--pager-->
+                <nav th:include="home/common/pager"></nav>
+            </div>
+        </div>
+        <aside class="sidebar">
+            <div class="fixed">
+                <!--widget_search-->
+                <div th:include="home/common/search_bar"></div>
+                <!--每日一句-->
+                <div th:include="home/common/english"></div>
+            </div>
+
+            <!--热门文章-->
+            <div th:include="home/common/hot_articles"></div>
+        </aside>
+    </section>
+    <!--footer-->
+    <div th:include="home/common/footer"></div>
+    <!--微信二维码模态框-->
+    <div th:include="home/common/weixin_code"></div>
+    <!--该功能正在日以继夜的开发中-->
+    <div th:include="home/common/continue"></div>
+    <!--右键菜单列表-->
+    <div th:include="home/common/rightkey_menu"></div>
+
+    <!--publicJs-->
+    <div th:include="home/common/public_js"></div>
+</body>
+</html>

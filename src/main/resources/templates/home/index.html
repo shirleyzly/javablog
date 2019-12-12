@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>博客首页</title>
+    <head th:include="home/common/header"></head>
+</head>
+
+<body class="user-select">
+    <!--Header nav-->
+    <header th:include="home/common/main_menu"></header>
+    <!--container-->
+    <section class="container">
+        <div class="content-wrap">
+            <div class="content">
+                <div class="jumbotron">
+                    <h1>欢迎访问个人博客</h1>
+                    <p>仅仅是自己学习心得！</p>
+                </div>
+                <div id="focusslide" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#focusslide" data-slide-to="0" class="active"></li>
+                        <li data-target="#focusslide" data-slide-to="1"></li>
+                        <li data-target="#focusslide" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active"><a href="" target="_blank">
+                            <img src="/images/banner/banner_01.jpg" alt="" class="img-responsive"></a>
+                            <!--<div class="carousel-caption"> </div>-->
+                        </div>
+                        <div class="item"><a href="" target="_blank">
+                            <img src="/images/banner/banner_02.jpg" alt="" class="img-responsive"></a>
+                            <!--<div class="carousel-caption"> </div>-->
+                        </div>
+                        <div class="item"><a href="" target="_blank">
+                            <img src="/images/banner/banner_03.jpg" alt="" class="img-responsive"></a>
+                            <!--<div class="carousel-caption"> </div>-->
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#focusslide" role="button" data-slide="prev" rel="nofollow">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">上一个</span>
+                    </a>
+                    <a class="right carousel-control" href="#focusslide" role="button" data-slide="next" rel="nofollow">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">下一个</span>
+                    </a>
+                </div>
+                <!--今日推荐-->
+                <article class="excerpt-minic excerpt-minic-index">
+                    <h2>
+                        <span class="red">【今日推荐】</span>
+                        <a th:href="@{article.html(id=${dailyRecommond.id})}" th:title="${dailyRecommond.title}" th:text="${dailyRecommond.title}"></a>
+                    </h2>
+                    <p class="note" th:text="${dailyRecommond.description}">
+                    </p>
+                </article>
+
+                <div class="title">
+                    <h3>最新发布</h3>
+                    <div class="more">
+                        <a target="_blank" th:href="@{search.html(type=1)}">PHP</a>
+                        <a target="_blank" th:href="@{search.html(type=2)}">Java</a>
+                        <a target="_blank" th:href="@{search.html(type=3)}">SQL</a>
+                        <a target="_blank" th:href="@{search.html(type=99)}">其它</a>
+                    </div>
+                </div>
+                <article th:each="articles:${data}" th:class="excerpt+' '+excerpt-+(${articles.id})">
+                    <a class="focus" th:href="@{article.html(id=${articles.id})}" title="">
+                        <img class="thumb" th:src="${articles.pic}" alt="">
+                    </a>
+                    <header>
+                        <a class="cat" href="program" th:href="@{article.html(id=${articles.id})}" th:text="${typeCodeMap['__${articles.type}__']}"><i></i></a>
+                        <h2>
+                            <a th:href="@{article.html(id=${articles.id})}" th:title="${articles.title}" th:text="${articles.title}"></a>
+                        </h2>
+                    </header>
+                    <p class="meta">
+                        <time class="time">
+                            <i class="glyphicon glyphicon-time"></i>
+                            <span th:text="${articles.createTime}"></span>
+                        </time>
+                        <span class="views">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                            共<span th:text="${articles.click}"></span>人围观
+                        </span>
+                    </p>
+                    <p class="note" th:text="${articles.description}"></p>
+                </article>
+                <!--pager-->
+                <nav th:include="home/common/pager"></nav>
+            </div>
+        </div>
+        <!--sidebar-->
+        <aside th:include="home/common/index_sidebar"></aside>
+    </section>
+    <!--footer-->
+    <div th:include="home/common/footer"></div>
+    <!--微信二维码模态框-->
+    <div th:include="home/common/weixin_code"></div>
+    <!--该功能正在日以继夜的开发中-->
+    <div th:include="home/common/continue"></div>
+    <!--登录注册模态框-->
+    <head th:include="home/common/login"></head>
+    <!--右键菜单列表-->
+    <div th:include="home/common/rightkey_menu"></div>
+
+    <!--publicJs-->
+    <div th:include="home/common/public_js"></div>
+</body>
+</html>

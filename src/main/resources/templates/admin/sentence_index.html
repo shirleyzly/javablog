@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>每日一句英文</title>
+    <head th:include="/admin/common/header"></head>
+</head>
+<body>
+<div id="wrapper">
+    <!-- 左侧菜单 -->
+    <nav th:include="/admin/common/sidebar"></nav>
+    <!-- 内容部分-->
+    <div id="page-wrapper">
+        <div class="col-md-12 graphs">
+            <div class="xs">
+                <h3>每日一句英文</h3>
+                <div class="bs-example4" style="text-align: right;padding: 10px;">
+                    <a th:href="@{/admin/sentence/add.html}" type="button" style="margin-right: 20px;" class="btn btn-primary">新增</a>
+                </div>
+                <div class="bs-example4" data-example-id="contextual-table">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>句    子</th>
+                            <th>操    作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="sentence : ${data}" th:class="${sentence.id%2>0}? active:info" th:id="tr-+${sentence.id}">
+                            <th th:text="${sentence.id}" th:score="${sentence.id%2>0}? row:success"></th>
+                            <td>
+                                <span th:text="${sentence.en}"></span><br/>
+                                译：<i th:text="${sentence.cn}"></i><br/>
+                                <small th:text="${sentence.createTime}"></small>
+                            </td>
+                            <th><button type="button" th:data-id="${sentence.id}" data-obj="sentence" class="btn btn-danger delete-single">删除</button></th>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <!--分页-->
+                    <nav th:include="/admin/common/pager"></nav>
+                </div>
+            </div>
+            <!--copyright-->
+            <div th:include="/admin/common/copy_layout"></div>
+        </div>
+    </div>
+</div>
+</body>
+<!--modal-->
+<div th:include="/admin/common/module/deleted_confirm"></div>
+<div th:include="/admin/common/module/disappare_modal"></div>
+</html>
+<!-- /#wrapper -->
+<!-- Bootstrap Core JavaScript -->
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/comm/js/common.js"></script>
+<script type="text/javascript">
+    commonJs = new commonJs();
+    commonJs.init();
+</script>

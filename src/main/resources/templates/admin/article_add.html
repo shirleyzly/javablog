@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>新增文章</title>
+    <head th:include="/admin/common/header"></head>
+</head>
+<body>
+<div id="wrapper">
+    <!-- 左侧菜单 -->
+    <nav th:include="/admin/common/sidebar"></nav>
+    <!-- 内容部分-->
+    <div id="page-wrapper">
+        <div class="col-md-12 graphs">
+            <div class="xs">
+                <h3>新增文章</h3>
+                <div class="well1 white">
+                    <form id="add-form" class="form-floating"  enctype="multipart/form-data" onsubmit="return false;">
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="control-label">文章标题</label>
+                                <input type="text" class="form-control1" name="title">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">封面图片</label>
+                                <input type="text" class="form-control1" name="pic">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">文章内容</label>
+                                <!--百度UE编辑器-->
+                                <div th:include="/admin/common/ueditor"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">文章描述</label>
+                                <input type="text" class="form-control1" name="description">
+                            </div>
+                            <div class="form-group filled">
+                                <label class="control-label">文章类型</label>
+                                <select class="form-control1" name="type">
+                                    <option value="">请选择</option>
+                                    <option value="1">PHP</option>
+                                    <option value="2">JAVA</option>
+                                    <option value="3">SQL</option>
+                                    <option value="4">go</option>
+                                    <option value="5">python</option>
+                                    <option value="6">internet</option>
+                                    <option value="7">大数据</option>
+                                    <option value="8">运维</option>
+                                    <option value="9">前端</option>
+                                    <option value="10">其它</option>
+                                </select>
+                            </div>
+                            <div class="form-group filled">
+                                <label class="control-label">文章等级</label>
+                                <select class="form-control1" name="grade">
+                                    <option value="">请选择</option>
+                                    <option value="0">编程基础</option>
+                                    <option value="1">编程进阶</option>
+                                </select>
+                            </div>
+                            <div class="form-group filled">
+                                <label class="control-label">是否草稿</label>
+                                <select class="form-control1" name="deleted">
+                                    <option value="">请选择</option>
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <!--用object判断需要添加的对象-->
+                                <input type="hidden" value="article" id="object-name" name="object"/>
+                                <button type="submit" id="btn-submit" class="btn btn-primary">提交</button>
+                                <button type="reset" id="btn-reset" class="btn btn-default">重置</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!--copyright-->
+            <div th:include="/admin/common/copy_layout"></div>
+        </div>
+    </div>
+    <!--modal-->
+    <div th:include="/admin/common/module/disappare_modal"></div>
+</body>
+</html>
+<!-- /#wrapper -->
+<!-- Bootstrap Core Ja!--cript -->
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/ueditor/ueditor.config.js?v=0.0.4"></script>
+<script src="/admin/ueditor/ueditor.all.js?v=0.0.4"></script>
+<script src="/admin/ueditor/lang/zh-cn/zh-cn.js?v=0.0.4"></script>
+<script src="/admin/comm/js/common.js?v=0.0.1"></script>
+
+<script type="text/javascript">
+    commonJs = new commonJs();
+    commonJs.init();
+    commonJs.ueditor();
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>个人简历</title>
+    <head th:include="home/common/header"></head>
+</head>
+
+<body class="user-select">
+    <!--Header nav-->
+    <header th:include="home/common/main_menu"></header>
+    <section class="container">
+        <div class="content-wrap">
+            <div class="content">
+                <div class="title">
+                    <h3>个人简历</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--footer-->
+    <div th:include="home/common/footer"></div>
+    <!--微信二维码模态框-->
+    <div th:include="home/common/weixin_code"></div>
+    <!--该功能正在日以继夜的开发中-->
+    <div th:include="home/common/continue"></div>
+    <!--右键菜单列表-->
+    <div th:include="home/common/rightkey_menu"></div>
+
+    <!--publicJs-->
+    <div th:include="home/common/public_js"></div>
+</body>
+</html>
