@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>编程进阶</title>
+    <title>英语口语</title>
     <head th:include="home/common/header"></head>
 </head>
 
@@ -12,7 +12,7 @@
         <div class="content-wrap">
             <div class="content">
                 <div class="title">
-                    <h3>编程进阶</h3>
+                    <h3>英语口语</h3>
                 </div>
                 <article th:each="articles:${data}" th:class="excerpt+' '+excerpt-+(${articles.id})">
                     <a class="focus" th:href="@{article.html(id=${articles.id})}" title="${articles.title}">

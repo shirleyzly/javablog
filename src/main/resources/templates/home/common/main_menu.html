@@ -8,8 +8,8 @@
                     <li><a href="links.html" rel="nofollow">友情链接</a></li>
                     <!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" rel="nofollow">关注本站 <span class="caret"></span></a>-->
                     <!--<ul class="dropdown-menu header-topbar-dropdown-menu">-->
-                    <!--<li><a data-toggle="modal" data-target="#WeChat" rel="nofollow"><i class="fa fa-weixin"></i> 微信</a></li>-->
-                    <!--<li><a href="#" rel="nofollow"><i class="fa fa-weibo"></i> 微博</a></li>-->
+                    <li><a data-toggle="modal" data-target="#WeChat" rel="nofollow"><i class="fa fa-weixin"></i> 微信</a></li>
+                    <li><a href="#" rel="nofollow"><i class="fa fa-weibo"></i> 微博</a></li>
                     <!--<li><a data-toggle="modal" data-target="#areDeveloping" rel="nofollow"><i class="fa fa-rss"></i> RSS</a></li>-->
                     <!--</ul>-->
                     <!--</li>-->
@@ -23,10 +23,11 @@
             <div class="collapse navbar-collapse" id="header-navbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li th:class="${nav_name == 1} ? active:default"><a data-cont="个人博客" href="index.html">首页</a></li>
-                    <li th:class="${nav_name == 2} ? active:default"><a href="basic.html">编程基础</a></li>
-                    <li th:class="${nav_name == 3} ? active:default"><a href="learn.html">编程进阶</a></li>
-                    <li th:class="${nav_name == 4} ? active:default"><a href="resume.html">个人简历</a></li>
-                    <li th:class="${nav_name == 5} ? active:default"><a href="write.html">个人写作</a></li>
+                    <li th:class="${nav_name == 3} ? active:default"><a href="learn.html">英语口语</a></li>
+                    <li th:class="${nav_name == 2} ? active:default"><a href="basic.html">编程技术</a></li>
+                    <li th:class="${nav_name == 2} ? active:default"><a href="write.html">生活感悟</a></li>
+                    <!--<li th:class="${nav_name == 4} ? active:default"><a href="resume.html">个人简历</a></li>-->
+                    <!--<li th:class="${nav_name == 5} ? active:default"><a href="write.html">个人写作</a></li>-->
                     <li><a href="admin/index.html">登录后台</a></li>
                 </ul>
                 <form class="navbar-form visible-xs" action="/search.html" method="get">

@@ -54,6 +54,31 @@ public class AdminController {
     }
 
     /**
+     * 英语口语列表
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/english/index.html")
+    public String articleEnglishList(ModelMap modelMap, @RequestParam(defaultValue = "1") Integer page) {
+        if(page<1) page = 1;
+
+        //页码数
+        Integer total = articleService.getArticleTotalRecord(new HashMap<>());
+        Integer pageCounts = total/pageSize;
+        if(total%pageSize > 0) {
+            pageCounts = pageCounts+1;
+        }
+        //列表
+        List articles = articleService.getArticleTitleList((page-1)*pageSize,pageSize);
+        //渲染
+        modelMap.putAll(ServiceFunc.formatMapAttribute(page, pageSize, pageCounts, articles, "/admin/english/index"));
+        //将文章类型名称渲染进页面中
+        modelMap.addAttribute("typeCodeMap", CommonConstant.CODE_TYPE);
+        modelMap.addAttribute("codeGradeMap", CommonConstant.CODE_GRADE);
+        return "/admin/english_index";
+    }
+
+    /**
      * 文章列表
      * @param modelMap
      * @return

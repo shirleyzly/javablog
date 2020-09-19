@@ -68,7 +68,7 @@ public class IndexController {
     }
 
     /**
-     * 编程基础
+     * 编程技术
      * @param modelMap
      * @return
      */
@@ -96,7 +96,7 @@ public class IndexController {
     }
 
     /**
-     * 编程进阶
+     * 英语口语
      * @param modelMap
      * @return
      */

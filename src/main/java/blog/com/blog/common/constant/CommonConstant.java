@@ -15,16 +15,16 @@ public class CommonConstant {
     //博客description
     public final static String BLOG_DESCRIPTION = "个人博客-为了代码第2次出发，从基础垒起~";
     //博客email
-    public final static String BLOG_EMAIL = "blog@lulijuan.com";
+    public final static String BLOG_EMAIL = "admin@lulijuan.com";
 
     //导航栏
     public final static Map MAIN_NAVIGATION_MENU = new HashMap();
     static {
         MAIN_NAVIGATION_MENU.put("index", "首页");
-        MAIN_NAVIGATION_MENU.put("basic","编程基础");
-        MAIN_NAVIGATION_MENU.put("learn","编程进阶");
+        MAIN_NAVIGATION_MENU.put("basic","编程技术");
+        MAIN_NAVIGATION_MENU.put("learn","英语口语");
         MAIN_NAVIGATION_MENU.put("resume","个人简历");
-        MAIN_NAVIGATION_MENU.put("write","个人写作");
+        MAIN_NAVIGATION_MENU.put("write","生活感悟");
         MAIN_NAVIGATION_MENU.put("login","登录后台");
     }
 
@@ -64,6 +64,8 @@ public class CommonConstant {
         CODE_TYPE.put("8","运维");
         CODE_TYPE.put("9","前端");
         CODE_TYPE.put("10","其它");
+        CODE_TYPE.put("11","英语口语");
+        CODE_TYPE.put("12","英语美文");
     }
 
     //代码分类默认图片
